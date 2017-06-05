@@ -1,10 +1,8 @@
 var config = {
-  apiKey: "AIzaSyCdxGmqWURL8YUfGPK3OVANsyvsE0cHV5s",
-  authDomain: "reactfiretodoapp.firebaseapp.com",
-  databaseURL: "https://reactfiretodoapp.firebaseio.com"
+  apiKey: "AIzaSyAvzTNPrudlKMhuE8d5sbp0IbrItqR2MTE",
+  authDomain: "",
+  databaseURL: "https://messageinthebottle-4d3dc.firebaseio.com"
 };
-firebase.initializeApp(config);
-
 var converter = new Showdown.converter();
 
 
