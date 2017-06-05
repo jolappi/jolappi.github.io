@@ -1,2 +1,0 @@
-# jolappi.github.io
-mypage
