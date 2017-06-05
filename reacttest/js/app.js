@@ -3,8 +3,9 @@ var config = {
   authDomain: "",
   databaseURL: "https://messageinthebottle-4d3dc.firebaseio.com"
 };
-var converter = new Showdown.converter();
+firebase.initializeApp(config);
 
+var converter = new Showdown.converter();
 
 var Comment = React.createClass({
   render: function() {
