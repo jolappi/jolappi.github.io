@@ -1,4 +1,4 @@
-<script>
+
   var config = {
     apiKey: "AIzaSyAvzTNPrudlKMhuE8d5sbp0IbrItqR2MTE",
 
@@ -13,4 +13,4 @@
   };
 
   firebase.initializeApp(config);
-</script>
+
