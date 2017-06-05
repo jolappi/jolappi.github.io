@@ -69,7 +69,7 @@ var CommentBox = React.createClass({
   componentWillMount: function() {
     // Here we bind the component to Firebase and it handles all data updates,
     // no need to poll as in the React example.
-    this.bindAsArray(firebase.database().ref('commentsBox'), 'data');
+    this.bindAsArray(firebase.database().ref('refire'), 'data');
   },
 
   render: function() {
