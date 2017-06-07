@@ -11,8 +11,8 @@ var Comment = React.createClass({
   render: function() {
     var rawMarkup = converter.makeHtml(this.props.children.toString());
     return (
-      <div className='comment'>
-        <h2 className='commentAuthor'>{this.props.author}</h2>
+      <div className='Bottle'>
+        <h2 className='commentAuthor'>{this.props.bottle}</h2>
         <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
       </div>
     );
@@ -23,7 +23,7 @@ var Comment = React.createClass({
 var CommentList = React.createClass({
   render: function() {
     var commentNodes = this.props.data.map(function (comment, index) {
-      return <Comment key={index} author={comment.author}>{comment.text}</Comment>;
+      return <Comment key={index} duid={comment.duid}>{comment.bottle}</Comment>;
     });
     return <div className='commentList'>{commentNodes}</div>;
   }
@@ -33,18 +33,18 @@ var CommentList = React.createClass({
 var CommentForm = React.createClass({
   handleSubmit: function(event) {
     event.preventDefault();
-    var author = this.refs.author.value.trim();
-    var text = this.refs.text.value.trim();
-    this.props.onCommentSubmit({author: author, text: text});
-    this.refs.author.value = '';
-    this.refs.text.value = '';
+    var duid = this.refs.duid.value.trim();
+    var bottle = this.refs.bottle.value.trim();
+    this.props.onCommentSubmit({duid: duid, bottle: bottle});
+    this.refs.duid.value = '';
+    this.refs.bottle.value = '';
   },
 
   render: function() {
     return (
       <form className='commentForm' onSubmit={this.handleSubmit}>
-        <input type='text' placeholder='Your name' ref='author' />
-        <input type='text' placeholder='Say something...' ref='text' />
+        <input type='text' placeholder='Your name' ref='duid' />
+        <input type='text' placeholder='Say something...' ref='bottle' />
         <input type='submit' value='Post' />
       </form>
     );
