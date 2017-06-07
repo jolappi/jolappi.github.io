@@ -45,7 +45,7 @@ var CommentForm = React.createClass({
       <form className='commentForm' onSubmit={this.handleSubmit}>
         <input type='text' placeholder='Your name' ref='duid' />
         <input type='text' placeholder='Say something...' ref='bottle' />
-        <input type='submit' value='Post' />
+        <input type='submit' value='Post' disabled={!this.refs.duid.value}/>
       </form>
     );
   }
