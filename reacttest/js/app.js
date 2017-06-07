@@ -12,7 +12,7 @@ var Comment = React.createClass({
     var rawMarkup = converter.makeHtml(this.props.children.toString());
     return (
       <div className='Bottle'>
-        <h2 className='commentAuthor'>{this.props.bottle}</h2>
+        <h2 className='commentAuthor'>{this.props.duid}</h2>
         <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
       </div>
     );
