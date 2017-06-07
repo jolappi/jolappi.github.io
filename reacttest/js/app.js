@@ -31,6 +31,12 @@ var CommentList = React.createClass({
 
 
 var CommentForm = React.createClass({
+    getInitialState: function() {
+        return { showSubmit: '' };
+    },
+    onChange: function(evt) {   
+        	this.setState({ showSubmit: evt.target.value });
+    },
   handleSubmit: function(event) {
     event.preventDefault();
     var duid = this.refs.duid.value.trim();
@@ -43,12 +49,20 @@ var CommentForm = React.createClass({
   render: function() {
     return (
       <form className='commentForm' onSubmit={this.handleSubmit}>
-        <input type='text' placeholder='Your name' ref='duid' />
+        <input type='text' placeholder='Your name' ref='duid' onChange={this.onChange}/>
         <input type='text' placeholder='Say something...' ref='bottle' />
-        <input type='submit' value='Post' disabled={!this.refs.duid.value}/>
+        { this.state.showSubmit ? <Submits /> : null }
       </form>
     );
   }
+});
+
+var Submits = React.createClass({
+    render: function() {
+        return (
+            <input type='submit' value='Bottle'/>
+        );
+    }
 });
 
 
