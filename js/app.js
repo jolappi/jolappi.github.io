@@ -11,9 +11,11 @@ var Comment = React.createClass({
   render: function() {
     var rawMarkup = converter.makeHtml(this.props.children.toString());
     return (
-      <div className='Bottle'>
-        <h2 className='commentAuthor'>{this.props.duid}</h2>
-        <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
+      <div className='Bottle' style={{display: 'flex', justifyContent: 'center'}}>
+        <div class="col-lg-1 col-centered">
+            <h2 className='commentAuthor hidden'>{this.props.duid}</h2>
+            <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
+        </div>
       </div>
     );
   }
@@ -34,7 +36,7 @@ var CommentForm = React.createClass({
     getInitialState: function() {
         return { showSubmit: '' };
     },
-    onChange: function(evt) {   
+    onChange: function(evt) {
         	this.setState({ showSubmit: evt.target.value });
     },
   handleSubmit: function(event) {
@@ -45,14 +47,30 @@ var CommentForm = React.createClass({
     this.refs.duid.value = '';
     this.refs.bottle.value = '';
   },
-
+  generateUUID: function generateUUID() {
+      var d = new Date().getTime();
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = (d + Math.random()*16)%16 | 0;
+          d = Math.floor(d/16);
+          return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+      });
+      return uuid;
+  },
   render: function() {
+      var uuid = this.generateUUID();
     return (
-      <form className='commentForm' onSubmit={this.handleSubmit}>
-        <input type='text' placeholder='Your name' ref='duid' onChange={this.onChange}/>
-        <input type='text' placeholder='Say something...' ref='bottle' />
+      <div class="row" style={{ flex:1, background: 'gray', display: 'flex', justifyContent: 'center', height:'200' , alignItems: 'center' }}>
+      <form className='commentForm center-div' onSubmit={this.handleSubmit} style={{ alignItems: 'center' , justifyContent: 'center' }}>
+      <center>
+        <h2 style={{ whiteSpace: 'nowrap', color:'white' , justifyContent: 'center' }}>Leave your bottle </h2>
+        <br />
+        <input type='hidden' placeholder='Your name' ref='duid' value={uuid}/>
+        <input style={{ width:'400'}} align='center' type='text' placeholder='Say something...' onChange={this.onChange} ref='bottle' /><br />
+        <br />
         { this.state.showSubmit ? <Submits /> : null }
+        </center>
       </form>
+      </div>
     );
   }
 });
@@ -60,7 +78,7 @@ var CommentForm = React.createClass({
 var Submits = React.createClass({
     render: function() {
         return (
-            <input type='submit' value='Bottle'/>
+            <input type='submit' value='Cast your bottle' className='btn btn-lg btn-primary'/>
         );
     }
 });
@@ -89,7 +107,7 @@ var CommentBox = React.createClass({
   render: function() {
     return (
       <div className='commentBox'>
-        <h1>Bottles</h1>
+        <h1 style={{display: 'flex', justifyContent: 'center'}}>Message In the Bottle</h1>
         <CommentList data={this.state.data} />
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
       </div>
