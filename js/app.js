@@ -65,7 +65,7 @@ var CommentForm = React.createClass({
         <h2 style={{ whiteSpace: 'nowrap', color:'white' , justifyContent: 'center' }}>Leave your bottle </h2>
         <br />
         <input type='hidden' placeholder='Your name' ref='duid' value={uuid}/>
-        <input style={{ width:'80%'}} align='center' type='text' placeholder='Say something...' onChange={this.onChange} ref='bottle' /><br />
+        <input style={{ width:'90%'}} align='center' type='text' placeholder='Say something...' onChange={this.onChange} ref='bottle' /><br />
         <br />
         { this.state.showSubmit ? <Submits /> : null }
         </center>
