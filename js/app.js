@@ -62,10 +62,10 @@ var CommentForm = React.createClass({
       <div class="row" style={{ flex:1, background: 'gray', display: 'flex', justifyContent: 'center', height:'200' , alignItems: 'center' }}>
       <form className='commentForm center-div' onSubmit={this.handleSubmit} style={{ alignItems: 'center' , justifyContent: 'center' }}>
       <center>
-        <h2 style={{ whiteSpace: 'nowrap', color:'white' , justifyContent: 'center' }}>Leave your bottle </h2>
+        <h2 style={{ whiteSpace: 'nowrap', color:'white' , justifyContent: 'center' }}>Heitä pullosi - Cast away your bottle </h2>
         <br />
         <input type='hidden' placeholder='Your name' ref='duid' value={uuid}/>
-        <input style={{ width:'80%'}} align='center' type='text' placeholder='Say something...' onChange={this.onChange} ref='bottle' /><br />
+        <input style={{ width:'80%'}} align='center' type='text' placeholder='Kirjoita jotain - Write something...' onChange={this.onChange} ref='bottle' /><br />
         <br />
         { this.state.showSubmit ? <Submits /> : null }
         </center>
@@ -78,7 +78,7 @@ var CommentForm = React.createClass({
 var Submits = React.createClass({
     render: function() {
         return (
-            <input type='submit' value='Cast your bottle' className='btn btn-lg btn-primary'/>
+            <input type='submit' value='Heitä pullosi - Cast your bottle' className='btn btn-lg btn-primary'/>
         );
     }
 });
@@ -107,7 +107,7 @@ var CommentBox = React.createClass({
   render: function() {
     return (
       <div className='commentBox'>
-        <h1 style={{display: 'flex', justifyContent: 'center'}}>Message In the Bottle</h1>
+        <h2 style={{display: 'flex', justifyContent: 'center'}}>Pullo Posti - Message In the Bottle</h2>
         <CommentList data={this.state.data} />
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
       </div>
