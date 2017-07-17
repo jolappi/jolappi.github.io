@@ -2,13 +2,15 @@
 <html lang="en">
   <head>
       <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
-      <script> $(function(){$("head").load("head.html"); });</script>
+      <script src="js/jquery.include.js"></script>
+      <script>$.include("head.html");</script>
   </head>
 
   <body>
-    <!-- NAVBAR ================================================== -->
-    <script> $(function(){$("#navbar").load("navbar.html"); });</script>
-    <div class="navbar-wrapper" id="navbar"></div>
+      <!-- NAVBAR ================================================== -->
+      <div class="navbar-wrapper" id="navbar">
+      <script>$.include("navbar.html");</script>
+      </div>
 
     <!-- START THE FEATURETTES -->
     <div class="jumpotron" style="background:white-smoke">
@@ -42,8 +44,9 @@
     <!-- /END THE FEATURETTES -->
 
     <!-- FOOTER -->
-    <script> $(function(){$("#footer").load("footer.html"); });</script>
-    <div class="container" id="footer"></div>
+    <div class="container" id="footer">
+    <script>$.include("footer.html");</script>
+    </div><!-- /.container -->
 
   </body>
 </html>
