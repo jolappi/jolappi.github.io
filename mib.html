@@ -27,13 +27,15 @@
 
      <script type="text/babel" src="js/app.js"></script>
      <!--script src="myreactcode.js"></script-->
-
+     <script src="js/jquery.include.js"></script>
+     <script>$.include("head.html");</script>
   </head>
 
   <body>
     <!-- NAVBAR ================================================== -->
-    <script> $(function(){$("#navbar").load("navbar.html"); });</script>
-    <div class="navbar-wrapper" id="navbar"></div>
+    <div class="navbar-wrapper" id="navbar">
+    <script>$.include("navbar.html");</script>
+    </div>
 
     <!-- START THE FEATURETTES -->
     <div class="jumpotron" style="background:azure">
@@ -50,7 +52,7 @@
         </div>
 
         <hr class="featurette-divider">
-        
+
         <div class="row featurette">
           <div class="col-md-7 col-md-push-5">
             <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
