@@ -1,0 +1,16 @@
+{
+	// Define token (exact phrase) replacements here
+	"token": {
+        "About":"Tietoja",
+        "Contact":"Ota Yhteyttä",
+        "Programmer Page of Padio Oy":"Ohjelmoijan sivu - Padio Oy",
+        "waz" : "jouman",
+        "navbartitle" : "Padio SW",
+        "more" : "Lisää",
+        "heading1" : "Otsikko"
+	},
+	// Define regular expression replacements here
+	"regex": [
+		["My regex", "i", "someReplacement"]
+	]
+}

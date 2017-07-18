@@ -15,7 +15,7 @@ var translate = function (data)
 
 
 langCode = navigator.language.substr (0, 2);
-
+console.log(langCode);
 if (langCode in langs){
 	$.getJSON('lang/'+langCode+'.json', translate);
 } else {
