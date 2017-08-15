@@ -43,7 +43,7 @@ var translate = function (data)
 langCode = getFirstBrowserLanguage();
 
 if (langCode in langs){
-	console.log("preflang:"langCode);
+	console.log("preflang:" + langCode);
 	$.getJSON('lang/'+langCode+'.json', translate);
 } else {
 	$.getJSON('lang/en.json', translate);
