@@ -1,10 +1,10 @@
 {
-    "About":"Tietoja",
-    "Contact":"Ota Yhteyttä",
-    "Programmer Page of Padio Oy":"Ohjelmoijan sivu - Padio Oy",
+    "About":"About",
+    "Contact":"Contact",
+    "Programmer Page of Padio Oy":"Programmers page - Padio Oy",
     "carouselh1title" : "Padio Web",
     "navbartitle" : "Padio SW",
-    "more" : "Lisää",
+    "more" : "more",
     "heading1" : "Heading",
     "backtotop" : "Back to top"
 }
