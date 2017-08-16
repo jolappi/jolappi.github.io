@@ -2,8 +2,11 @@
     "About":"Tietoja",
     "Contact":"Ota Yhteyttä",
     "Programmer Page of Padio Oy":"Ohjelmoijan sivu - Padio Oy",
-    "waz" : "jouman",
     "navbartitle" : "Padio SW",
     "more" : "Lisää",
-    "heading1" : "Otsikko"
+    "heading1" : "Otsikko",
+    "Home" : "Koti",
+    "Goto" : "Mene",
+    "carouselh1title" : "Padio Web",
+    "backtotop" : "Ylös"
 }

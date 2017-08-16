@@ -35,16 +35,17 @@ var translate = function (data)
 	{
 		var strTr = data [$(this).attr ('tkey')];
 	    $(this).html (strTr);
-		console.log(strTr);
+		//console.log("TO:"+langCode+" this:"+$(this).attr ('tkey')+" what:"+strTr);
 	});
 }
 
 
-langCode = getFirstBrowserLanguage();
+langCode = getFirstBrowserLanguage().substring(0,2);
 
-if (langCode in langs){
-	console.log("preflang:" + langCode);
-	$.getJSON('lang/'+langCode+'.json', translate);
+if ($.inArray(langCode,langs)){
+	//console.log("preflang:" + langCode);
+	$.getJSON('lang/'+langCode+'.json?nocache=123', translate);
 } else {
-	$.getJSON('lang/en.json', translate);
+    //console.log("fook");
+	$.getJSON('lang/en.json?nocache=123', translate);
 }
