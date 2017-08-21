@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
       <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
-      <script src="js/jquery.include.js"></script>
-      <script>$.include("head.html");</script>
-  </head>
+      <script>
+          $(function(){
+              $("head").load("head.html");
+          });
+      </script>
+      <title tkey="Programmer Page of Padio Oy"></title>
+</head>
 
   <body>
       <!-- NAVBAR ================================================== -->
-      <div class="navbar-wrapper" id="navbar">
-      <script>$.include("navbar.html");</script>
+      <div class="navbar-wrapper" id="navbari">
+          <script>
+            $(function(){
+                  $("#navbari").load("navbar.html",function(){
+                      $("#aboutbtn").addClass("active");
+                      $("#footer").load("footer.html",function(){
+                          $.getScript( "js/lang.js");
+                      });
+                  });
+            });
+          </script>
       </div>
-      <script>document.getElementById("aboutbtn").className = "active";</script>
+      <!--script>document.getElementById("aboutbtn").className = "active";</script-->
 
     <!-- START THE FEATURETTES -->
     <div class="jumpotron" style="background:white-smoke">
@@ -46,7 +59,6 @@
 
     <!-- FOOTER -->
     <div class="container" id="footer">
-    <script>$.include("footer.html");</script>
     </div><!-- /.container -->
 
   </body>
