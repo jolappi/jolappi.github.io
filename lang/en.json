@@ -9,5 +9,8 @@
     "backtotop" : "Back to top",
     "Home" : "Home",
     "Goto" : "Go to",
-    "Linkedin" : "Linkedin"
+    "Linkedin" : "Linkedin",
+    "MongoDBGuestbook" : "MongoDB - Guestbook",
+    "You" : "You",
+    "Privacy" : "Privacy"
 }

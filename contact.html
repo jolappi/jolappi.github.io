@@ -3,16 +3,23 @@
   <head>
       <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
       <script src="js/jquery.include.js"></script>
-      <script>$.include("head.html");</script>
+      <script> $(function(){$("head").load("head.html"); });</script>
   </head>
 
   <body>
       <!-- NAVBAR ================================================== -->
-      <div class="navbar-wrapper" id="navbar">
-      <script>$.include("navbar.html");</script>
+      <div class="navbar-wrapper" id="navbari">
+          <script>
+            $(function(){
+                  $("#navbari").load("navbar.html",function(){
+                      $("#homebtn").addClass("active");
+                      $("#footer").load("footer.html",function(){
+                          $.getScript( "js/lang.js");
+                      });
+                  });
+            });
+          </script>
       </div>
-      <script>document.getElementById("contactbtn").className = "active";</script>
-
     <!-- JOTFORM ================================================== -->
     <div class="container" style="background:white-smoke">
     <script type="text/javascript" src="https://form.jotformeu.com/jsform/70960992382365"></script>
@@ -20,7 +27,6 @@
 
     <!-- FOOTER -->
     <div class="container" id="footer">
-    <script>$.include("footer.html");</script>
     </div><!-- /.container -->
 
   </body>
