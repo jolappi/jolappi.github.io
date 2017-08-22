@@ -5,6 +5,33 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var getFirstBrowserLanguage = function () {
+    var nav = window.navigator,
+    browserLanguagePropertyKeys = ['language', 'browserLanguage', 'systemLanguage', 'userLanguage'],
+    i,
+    language;
+
+    // support for HTML 5.1 "navigator.languages"
+    if (Array.isArray(nav.languages)) {
+      for (i = 0; i < nav.languages.length; i++) {
+        language = nav.languages[i];
+        if (language && language.length) {
+          return language;
+        }
+      }
+    }
+
+    // support for other well known properties in browsers
+    for (i = 0; i < browserLanguagePropertyKeys.length; i++) {
+      language = nav[browserLanguagePropertyKeys[i]];
+      if (language && language.length) {
+        return language;
+      }
+    }
+
+    return "en";
+  };
+
 var converter = new Showdown.converter();
 
 var Comment = React.createClass({
@@ -58,14 +85,21 @@ var CommentForm = React.createClass({
   },
   render: function() {
       var uuid = this.generateUUID();
+      var lang = getFirstBrowserLanguage();
+      var thistext = 'Write something...';
+      var thistext2 = 'Cast away your bottle';
+      if(lang=="fi"){
+          thistext = 'Kirjoita jotain...';
+          thistext2 = 'Heitä pullosi...'
+    }
     return (
       <div class="row" style={{ flex:1, background: 'gray', display: 'flex', justifyContent: 'center', height:'200' , alignItems: 'center' }}>
       <form className='commentForm center-div' onSubmit={this.handleSubmit} style={{ alignItems: 'center' , justifyContent: 'center' }}>
       <center>
-        <h2 style={{ whiteSpace: 'nowrap', color:'white' , justifyContent: 'center' }}>Heitä pullosi - Cast away your bottle </h2>
+        <h2 style={{ whiteSpace: 'nowrap', color:'white' , justifyContent: 'center' }}>{thistext2} </h2>
         <br />
         <input type='hidden' placeholder='Your name' ref='duid' value={uuid}/>
-        <input style={{ width:'80%'}} align='center' type='text' placeholder='Kirjoita jotain - Write something...' onChange={this.onChange} ref='bottle' /><br />
+        <input style={{ width:'80%'}} align='center' type='text' placeholder={thistext} onChange={this.onChange} ref='bottle' /><br />
         <br />
         { this.state.showSubmit ? <Submits /> : null }
         </center>
@@ -77,8 +111,11 @@ var CommentForm = React.createClass({
 
 var Submits = React.createClass({
     render: function() {
+        var lang = getFirstBrowserLanguage();
+        var thistext = 'Cast your bottle';
+        if(lang=="fi")thistext = 'Heitä pullosi';
         return (
-            <input type='submit' value='Heitä pullosi - Cast your bottle' className='btn btn-lg btn-primary'/>
+            <input type='submit' value={thistext} className='btn btn-lg btn-primary'/>
         );
     }
 });
@@ -105,9 +142,14 @@ var CommentBox = React.createClass({
   },
 
   render: function() {
+      var lang = getFirstBrowserLanguage();
+      var thistext = 'Bottled Messages';
+      if(lang=="fi"){
+          thistext = 'Pullo Viestit';
+    }
     return (
       <div className='commentBox'>
-        <h2 style={{display: 'flex', justifyContent: 'center'}}>Pullo Posti - Message In the Bottle</h2>
+        <h2 style={{display: 'flex', justifyContent: 'center'}} tkey="messages">{thistext}</h2>
         <CommentList data={this.state.data} />
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
       </div>

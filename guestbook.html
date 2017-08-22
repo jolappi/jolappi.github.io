@@ -29,7 +29,7 @@
         <script>
           $(function(){
                 $("#navbari").load("navbar.html",function(){
-                    $("#homebtn").addClass("active");
+                    $("#morebtn").addClass("active");
                     $("#footer").load("footer.html",function(){
                         $.getScript( "js/lang.js");
                     });
@@ -50,30 +50,30 @@
 
     <div id="inalert" class="alert alert-danger alert-dismissable hidden">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Input something</strong> Pleaaase
+        <strong tkey="missinginput">Input something</strong>
     </div>
 
     <div id="gotchaalert" class="alert alert-danger alert-dismissable hidden">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Gotcha</strong>!
+        <strong>Gotcha!</strong>
     </div>
 
     <div id="successalert" class="alert alert-success alert-dismissable hidden">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Nicely Done!</strong>!
+        <strong>Nicely Done!</strong>
     </div>
 
     <!-- mondo -->
-    <div id="messages">
+    <div id="messages" style="padding-bottom:20px;">
     </div>
 
-    <div class="row" style="background:light-gray">
+    <div class="row" style="background:light-gray" style="margin-top:20px;">
         <div id="content" class="container" >
             <label tkey="You"></label>:<br><input id="whoareu"></input><br>
-            <label>Your two cents</label>:<br><textarea id="msg" class="form-control" rows="5"></textarea><br>
+            <label tkey="Your two cents">Your two cents</label>:<br><textarea maxlength="400" id="msg" class="form-control" rows="5"></textarea><br>
             <div class="g-recaptcha container" id="rcaptcha" style="" data-sitekey="6LeKly0UAAAAAD4an-S06zLZkk9Js9skIw0uUdq1"></div>
             <span id="captcha" style=""></span><br>
-            <button onclick="updategb()" style="margin-left:20px">Save me</button>
+            <button onclick="updategb()" style="margin-left:20px" tkey="saveme">Save me</button>
         </div>
     </div>
 

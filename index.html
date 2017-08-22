@@ -19,6 +19,8 @@
                       $("#homebtn").addClass("active");
                       $("#footer").load("footer.html",function(){
                           $.getScript( "js/lang.js");
+                          if($('#myCarousel').carousel)
+                            $('#myCarousel').carousel({ interval: 5000, cycle: true });
                       });
                   });
             });
@@ -35,34 +37,34 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+            <img class="first-slide" src='images/padiowebweb.png' />
           <div class="container">
             <div class="carousel-caption">
-              <h1 tkey="carouselh1title" lang="en">Padio Web</h1>
-              <p>We expertise in Angular, Nodejs, PHP, TWIG, JAVASCRIPT, MYSQL, <a class="ref" href="https://craftcms.com">CRAFT CMS</a>&
+              <h1 tkey="carouselh1title" tkey="carouselh1title">Padio Web</h1>
+              <p tkey="slide1">We expertise in Angular, Nodejs, PHP, TWIG, JAVASCRIPT, MYSQL, <a class="ref" href="https://craftcms.com">CRAFT CMS</a>&
                   <a class="ref" href="https://craftcommerce.com">CRAFT COMMERCE</a>. We've programmed <a class="ref" href="https://www.sadex.fi">Sadex web pages</a> ,
                   <a class="ref" href="https://www.sadex.fi/verkkokauppa">Sadex webshop</a>.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn More</a></p>
+              <p><a class="btn btn-lg btn-primary" href="http://www.padio.fi" role="button" tkey="learnmore">Learn More</a></p>
             </div>
           </div>
         </div>
         <div class="item">
-          <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+          <img class="second-slide" src="images/symmetryiosweb.png" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Padio iOS</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse Apps</a></p>
+              <h1 tkey="padioios">Padio iOS</h1>
+              <p tkey="slide2"></p>
+              <p><a class="btn btn-lg btn-primary" href="https://itunes.apple.com/us/developer/padio-oy/id610264977" role="button" tkey="browseapps">Browse Apps</a></p>
             </div>
           </div>
         </div>
         <div class="item">
-          <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+          <img class="third-slide" src="images/androidbottleweb.png" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Padio Android</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse Apps</a></p>
+              <h1 tkey="padioandroid">Padio Android</h1>
+              <p tkey="slide3"></p>
+              <p><a class="btn btn-lg btn-primary" href="https://play.google.com/store/apps/developer?id=Padio+Oy/Jouni+Lappi" role="button" tkey="browseapps">Browse Apps</a></p>
             </div>
           </div>
         </div>
@@ -86,22 +88,22 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
-          <img class="img-circle animated fadeIn mb-4" style="-webkit-animation-duration: 10s;animation-duration: 10s;" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle animated fadeIn mb-4" style="-webkit-animation-duration: 10s;animation-duration: 10s;" src="images/me.png" alt="Generic placeholder image" width="140" height="140">
           <h2 tkey="heading1"></h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p tkey="medescription"></p>
+          <p><a class="btn btn-default" href="about.html" role="button" tkey="viewdetails">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <img class="img-circle" src="images/padioroundweb.png" alt="Generic placeholder image" width="140" height="140">
+          <h2 tkey="heading2">Heading</h2>
+          <p tkey="padiodescription"></p>
+          <p><a class="btn btn-default" href="http://www.padio.fi" role="button" tkey="viewdetails">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <img class="img-circle" src="images/globeweb.png" alt="Generic placeholder image" width="140" height="140">
+          <h2 tkey="heading3">Heading</h2>
+          <p tkey="worlddescription"></p>
+          <p><a class="btn btn-default" href="http://www.worldometers.info/watch/world-population/" role="button" tkey="viewdetails">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 
