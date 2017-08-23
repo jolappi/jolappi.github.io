@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+      <script   src="js/jquery-3.2.1.min.js"></script>
       <script src="js/jquery.include.js"></script>
       <script> $(function(){$("head").load("head.html"); });</script>
   </head>
 
   <body>
+      <script>document.body.style.display = "none";</script>
       <!-- NAVBAR ================================================== -->
       <div class="navbar-wrapper" id="navbari">
           <script>
@@ -15,6 +16,7 @@
                       $("#contactbtn").addClass("active");
                       $("#footer").load("footer.html",function(){
                           $.getScript( "js/lang.js");
+                          document.body.style.display = "block";
                       });
                   });
             });

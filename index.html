@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-        <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
         <script>
             $(function(){
                 $("head").load("head.html");
@@ -11,6 +11,7 @@
   </head>
 
   <body>
+      <script>document.body.style.display = "none";</script>
       <!-- NAVBAR ================================================== -->
       <div class="navbar-wrapper" id="navbari">
           <script>
@@ -21,6 +22,7 @@
                           $.getScript( "js/lang.js");
                           if($('#myCarousel').carousel)
                             $('#myCarousel').carousel({ interval: 5000, cycle: true });
+                        document.body.style.display = "block";
                       });
                   });
             });
