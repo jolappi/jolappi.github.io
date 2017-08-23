@@ -31,15 +31,18 @@ var getFirstBrowserLanguage = function () {
 
     return "en";
   };
-
+var odd = 1;
 var converter = new Showdown.converter();
 
 var Comment = React.createClass({
   render: function() {
     var rawMarkup = converter.makeHtml(this.props.children.toString());
+    var colori = 'ghostwhite';
+    if(odd%2 - 1) colori="snow";
+    odd = odd + 1;
     return (
-      <div className='Bottle' style={{display: 'flex', justifyContent: 'center'}}>
-        <div class="col-lg-1 col-centered">
+      <div className='Bottle' style={{display: 'flex', justifyContent: 'center',background: colori}}>
+        <div class="col-lg-1 col-centered" style={{ paddingTop:'10px' }}>
             <h2 className='commentAuthor hidden'>{this.props.duid}</h2>
             <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
         </div>
@@ -93,10 +96,10 @@ var CommentForm = React.createClass({
           thistext2 = 'Heitä pullosi...'
     }
     return (
-      <div class="row" style={{ flex:1, background: 'gray', display: 'flex', justifyContent: 'center', height:'200' , alignItems: 'center' }}>
+      <div class="row" style={{ flex:1, background: 'lightGray', display: 'flex', justifyContent: 'center', height:'200' , alignItems: 'center' }}>
       <form className='commentForm center-div' onSubmit={this.handleSubmit} style={{ alignItems: 'center' , justifyContent: 'center' }}>
       <center>
-        <h2 style={{ whiteSpace: 'nowrap', color:'white' , justifyContent: 'center' }}>{thistext2} </h2>
+        <h2 style={{ whiteSpace: 'nowrap', color:'black' , justifyContent: 'center'}}>{thistext2} </h2>
         <br />
         <input type='hidden' placeholder='Your name' ref='duid' value={uuid}/>
         <input style={{ width:'80%'}} align='center' type='text' placeholder={thistext} onChange={this.onChange} ref='bottle' /><br />
@@ -149,7 +152,7 @@ var CommentBox = React.createClass({
     }
     return (
       <div className='commentBox'>
-        <h2 style={{display: 'flex', justifyContent: 'center'}} tkey="messages">{thistext}</h2>
+        <h2 style={{display: 'flex', justifyContent: 'center', paddingBottom:'40px'}} tkey="messages">{thistext}</h2>
         <CommentList data={this.state.data} />
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
       </div>
