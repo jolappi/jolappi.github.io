@@ -39,7 +39,8 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img class="first-slide" src='images/padiowebweb.png' />
+            <img class="lazy first-slide" data-src="images/padiowebweb.png" src="" />
+            <!--img class="first-slide" src='images/padiowebweb.png' /-->
           <div class="container">
             <div class="carousel-caption">
               <h1 tkey="carouselh1title" tkey="carouselh1title">Padio Web</h1>
@@ -51,7 +52,7 @@
           </div>
         </div>
         <div class="item">
-          <img class="second-slide" src="images/symmetryiosweb.png" alt="Second slide">
+          <img class="lazy second-slide" data-src="images/symmetryiosweb.png" src="" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
               <h1 tkey="padioios">Padio iOS</h1>
@@ -61,7 +62,7 @@
           </div>
         </div>
         <div class="item">
-          <img class="third-slide" src="images/androidbottleweb.png" alt="Third slide">
+          <img class="lazy third-slide" data-src="images/androidbottleweb.png" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
               <h1 tkey="padioandroid">Padio Android</h1>
@@ -90,19 +91,19 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
-          <img class="img-circle animated fadeIn mb-4" style="animation-duration: 6s;" src="images/me.png" alt="Generic placeholder image" width="140" height="140">
+          <img class="lazy img-circle animated fadeIn mb-4" style="animation-duration: 6s;" data-src="images/me.png" alt="Generic placeholder image" width="140" height="140">
           <h2 tkey="heading1"></h2>
           <p tkey="medescription"></p>
           <p><a class="btn btn-default" href="about.html" role="button" tkey="viewdetails">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4 fadeIn">
-          <img class="img-circle" style="animation-duration: 8s;" src="images/padioroundweb.png" alt="Generic placeholder image" width="140" height="140">
+          <img class="lazy img-circle" style="animation-duration: 8s;" data-src="images/padioroundweb.png" alt="Generic placeholder image" width="140" height="140">
           <h2 tkey="heading2">Heading</h2>
           <p tkey="padiodescription"></p>
           <p><a class="btn btn-default" href="http://www.padio.fi" role="button" tkey="viewdetails">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle fadeIn" style="animation-duration: 10s;" src="images/globeweb.png" alt="Generic placeholder image" width="140" height="140">
+          <img class="lazy img-circle fadeIn" style="animation-duration: 10s;" data-src="images/globeweb.png" alt="Generic placeholder image" width="140" height="140">
           <h2 tkey="heading3">Heading</h2>
           <p tkey="worlddescription"></p>
           <p><a class="btn btn-default" href="http://www.worldometers.info/watch/world-population/" role="button" tkey="viewdetails">View details &raquo;</a></p>
@@ -114,4 +115,7 @@
         <!--Footer is loaded above-->
     </div><!-- /.container -->
   </body>
+
+  <script type="text/javascript" src="js/jquery.lazy.min.js"></script>
+  <script src="js/myscripts.js"></script>
 </html>
