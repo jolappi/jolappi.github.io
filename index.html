@@ -1,17 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html amp lang="en">
   <head>
+        <meta charset="utf-8">
+        <script async src="https://cdn.ampproject.org/v0.js"></script>
         <script src="js/jquery-3.2.1.min.js"></script>
-        <script>
+
+        <script src="js/tether.min.js"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <script src="js/holder.min.js"></script>
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+
+        <!-- Custom styles for this template -->
+        <link href="css/carousel.css" rel="stylesheet">
+        <link href="css/mystyle.css" rel="stylesheet">
+
+        <!-- Material Design Bootstrap -->
+        <!--link href="css/mdb.min.css" rel="stylesheet"-->
+        <!-- Your custom styles (optional) -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <link rel="icon"
+              type="image/png"
+              href="images/favicon.png">
+        <!--script>
             $(function(){
                 $("head").load("head.html");
             });
-        </script>
+        </script-->
+        <script type="text/javascript" src="js/jquery.lazy.min.js"></script>
+        <script src="js/myscripts.js"></script>
         <title tkey="Programmer Page of Padio Oy"></title>
-  </head>
+        <link rel="canonical" href="http://jolappi.github.io/index.html">
+        <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    </head>
 
   <body>
-      <script>document.body.style.display = "none";</script>
+      <!--script>document.body.style.display = "none";</script-->
       <!-- NAVBAR ================================================== -->
       <div class="navbar-wrapper" id="navbari">
           <script>
@@ -22,7 +57,7 @@
                           $.getScript( "js/lang.js");
                           if($('#myCarousel').carousel)
                             $('#myCarousel').carousel({ interval: 5000, cycle: true });
-                        document.body.style.display = "block";
+                        //document.body.style.display = "block";
                       });
                   });
             });
@@ -39,8 +74,7 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img class="lazy first-slide" data-src="images/padiowebweb.png" src="" />
-            <!--img class="first-slide" src='images/padiowebweb.png' /-->
+          <img class="lazy first-slide" data-src="images/padiowebweb.png" src="images/padiowebweb.png" alt="firstslide"/>
           <div class="container">
             <div class="carousel-caption">
               <h1 tkey="carouselh1title" tkey="carouselh1title">Padio Web</h1>
@@ -115,7 +149,4 @@
         <!--Footer is loaded above-->
     </div><!-- /.container -->
   </body>
-
-  <script type="text/javascript" src="js/jquery.lazy.min.js"></script>
-  <script src="js/myscripts.js"></script>
 </html>
