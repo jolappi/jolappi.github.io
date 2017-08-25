@@ -1,30 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="loading">
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <script   src="js/jquery-3.2.1.min.js"></script>
+      <link href="css/mystyle.css" rel="stylesheet">
 
-     <!-- React -->
-     <script src="js/react.min.js"></script>
-     <script src="js/react-dom.min.js"></script>
+      <script src="js/jquery-3.2.1.min.js"></script>
 
-     <!-- Firebase -->
-     <script src="js/firebase.js"></script>
-
-     <!-- ReactFire -->
-     <script src="js/reactfire.min.js"></script>
-
-     <!-- throw-in-the-towel -->
-     <script src="js/throw-in-the-towel@2.0.2"></script>
-
-     <!-- Markdown -->
-     <script src="js/showdown@0.3.1"></script>
-     <!-- Custom styles for this template -->
-
-     <script type="text/babel" src="js/app.js"></script>
      <!--script src="myreactcode.js"></script-->
      <script src="js/jquery.include.js"></script>
      <script>
@@ -35,7 +19,7 @@
   </head>
 
   <body>
-      <script>document.body.style.display = "none";</script>
+      <!--script>document.body.style.display = "none";</script-->
       <!-- NAVBAR ================================================== -->
       <div class="navbar-wrapper" id="navbari">
           <script>
@@ -44,7 +28,8 @@
                       $("#morebtn").addClass("active");
                       $("#footer").load("footer.html",function(){
                           $.getScript( "js/lang.js");
-                          document.body.style.display = "block";
+                          //document.body.style.display = "block";
+                          $( "html" ).removeClass( "loading" );
                       });
                   });
             });
@@ -79,4 +64,23 @@
     </div><!-- /.container -->
 
   </body>
+
+       <!-- React -->
+       <script src="js/react.min.js"></script>
+       <script src="js/react-dom.min.js"></script>
+
+       <!-- Firebase -->
+       <script src="js/firebase.js"></script>
+
+       <!-- ReactFire -->
+       <script src="js/reactfire.min.js"></script>
+
+       <!-- throw-in-the-towel -->
+       <script src="js/throw-in-the-towel@2.0.2"></script>
+
+       <!-- Markdown -->
+       <script src="js/showdown@0.3.1"></script>
+       <!-- Custom styles for this template -->
+
+       <script async type="text/babel" src="js/app.js"></script>
 </html>

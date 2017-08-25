@@ -61,8 +61,8 @@ var getgb = function(){
         });
         //elm.innerHTML = docs;
         //console.log(elm.who);
-        console.log("Found docs", docs)
-        console.log("[MongoDB Stitch] Connected to Stitch")
+        //console.log("Found docs", docs)
+        //console.log("[MongoDB Stitch] Connected to Stitch")
     }).catch(err => {
         console.error(err)
     });
