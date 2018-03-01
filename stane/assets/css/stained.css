@@ -420,6 +420,7 @@
 
 .section-carousel {
     background-color: #222222;
+    max-height: 640px;
 }
 
 .components-page .wrapper>.header,
