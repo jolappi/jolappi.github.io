@@ -1,30 +1,28 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Location test</title>
-    <style type="text/css" media="screen">
-    </style>
-  </head>
-  <body>
-      <input name="lat" id="lat"/>
-      <input name="long" id="long"/>
-  </body>
-  <script>
-var x = document.getElementById("long");
-var y = document.getElementById("lat");
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-function showPosition(position) {
-    x.value = position.coords.latitude;
-    y.value = position.coords.longitude;
-}
-getLocation();
-</script>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Location test</title>
+        <style type="text/css" media="screen"></style>
+    </head>
+    <body>
+        <input name="lat" id="lat"/>
+        <input name="long" id="long"/>
+        <button onclick="getLocation()">Get location</button>
+    </body>
+    <script>
+        var x = document.getElementById("long");
+        var y = document.getElementById("lat");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        function showPosition(position) {
+            x.value = position.coords.latitude;
+            y.value = position.coords.longitude;
+        }
+    </script>
 </html>
