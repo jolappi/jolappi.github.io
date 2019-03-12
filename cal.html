@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang='en' class=''>
+    <head>
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href=""/>
+    <link rel="mask-icon" type="" href="" color="#111"/>
+    <link rel="canonical" href=""/>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.css'>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-sm-5 col-md-2 col-lg-3"></div>
+            <div class="col-sm-2 col-md-8 col-lg-6">
+                <select id="paikkakunta" onchange="haepvmt(this.options[this.selectedIndex].value)">
+                    <option selected disabled>Valitse nouto paikkakunta</option>
+                    <option value="tampere">Tampere</option>
+                    <option value="pirkkala">Pirkkala</option>
+                    <option value="ylöjärvi">Ylöjärvi</option>
+                    <option value="nokia">Nokia</option>
+                </select>
+            </div>
+            <div class="col-sm-5 col-md-2 col-lg-3"></div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-5 col-md-2 col-lg-3"></div>
+            <div class="col-sm-2 col-md-8 col-lg-6">
+                <div id='calendar'></div>
+            </div>
+            <div class="col-sm-5 col-md-2 col-lg-3"></div>
+        </div>
+        <hr>
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/lang/fi.js'></script>
+        <script id="rendered-js">
+            var pk = "";
+            var bgcolo = 'purple';
+            var linerets = '';
+            function haepvmt(paikka){
+                //TODO
+                pk = paikka;
+                getpaikat(pk);
+                //alert('haetaan '+paikka+'n ajat');
+                //on single day events startdate=enddate
+                //exceptiondates is list ['YYYY-MM-DD',...]
+                //addEvnt(startdate,enddate,exceptiondates,title,description);
+            };
+            $(document).ready(function () {
+                //var selectedevent = null;
+                // page is now ready, initialize the calendar..
+                $('#calendar').fullCalendar({
+                    height: 'auto',
+                    width: 'auto',
+                    aspectRatio: 1,
+                    weekends: true,
+                    firstDay: 1,
+                    defaultView: 'month',
+                    titleFormat: {
+                        day: 'DD.MM.YYYY'   //whatever date format you want here
+                    },
+                    dayClick: function () {
+                        alert('a day has been clicked!');
+                    },
+                    eventClick: function (evnt) {
+                        //selectedevent = evnt;
+                        if(!pk){
+                            alert('Valitse paikkakunta ensin!');
+                            return;
+                        }
+                        $('#pvm').val(evnt.start.format('DD.MM.YYYY')+' '+pk);
+                        $('#myModal').modal('toggle');
+                    },
+                    eventAfterRender: function (event, element, view ) {
+                    },
+                    eventRender: function (eventObj, $el) {
+                        $el.popover({title: eventObj.title, content: eventObj.description, trigger: 'hover', placement: 'top', container: 'body'});
+                        //This is for showing description in calendar
+                        //$el.find('.fc-title').append('<div class="hr-line-solid-no-margin"></div><span>' + eventObj.description + linerets + '</span></div>');
+                    },
+                    eventMouseover: function (event, jsEvent, view) {}
+                });
+
+                //TODO testing only, remove from production
+                //addEvnt(new Date(),moment(new Date()).add(30,'d'), ['2019-03-18'], "11:00\n15:00", "Pirkkala,\nIso auto");
+                //addEvnt(moment(new Date()).add(2,'d'),moment(new Date()).add(100,'d'), ['2019-03-27'], "08:00\n11:00", "Pirkkala,\nPikku auto");
+            });
+            function addEvnt(indatestart, indateend, igndates, title, description) {
+                console.log(indatestart);
+                var max = 200;
+                var tempDate = indatestart;
+                var i = 0;
+                while ( max > 0 && moment(indateend).isAfter(tempDate) ) {
+                    max=max-1;
+                    var sdate = moment(indatestart).add(7 * i, 'd');
+                    tempDate = sdate;
+                    var fsdate = moment(sdate).format('YYYY-MM-DD');
+                    if ($.inArray(fsdate, igndates) == -1) {
+                        var event = {
+                            id: 1,
+                            title: title,
+                            start: fsdate,
+                            end: fsdate,
+                            description: description,
+                            color: bgcolo
+                        };
+                        $('#calendar').fullCalendar('renderEvent', event, true);
+                        var bgevent = {
+                            id: 1,
+                            title: title,
+                            start: fsdate,
+                            end: fsdate,
+                            description: description,
+                            color: bgcolo,
+                            rendering: 'background'
+                        };
+                        $('#calendar').fullCalendar('renderEvent', bgevent, true);
+                    }
+                    i = i + 1;
+                }
+            };
+        </script>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Noudon tarkemmat tiedot</h5>
+                    </div>
+                    <!-- TODO real submit -->
+                    <form id="noutoreq" action="http://foo.com">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label>
+                                    <span class="eqh">PVM:</span>
+                                    <input type="text" id="pvm" style="border: 0px;" disabled>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label>
+                                    <span class="eqh">NIMI:</span>
+                                    <br>
+                                    <input type="text" id="nimi" disabled="disabled">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label>
+                                    <span class="eqh">PUHELIN:</span>
+                                    <br>
+                                    <input type="text" id="puhelin" disabled="disabled">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label>
+                                    <span class="eqh">KLO:</span>
+                                    <br>
+                                    <input type="text" id="klo">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label>
+                                    <span>OSOITE:</span>
+                                    <br>
+                                    <input type="text" id="address" placeholder="Address">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hylkää</button>
+                        <button type="submit" class="btn btn-primary" >Tee nouto pyyntö</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    <!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      // TODO: Replace with your project's customized code snippet
+      var config = {
+          apiKey: "AIzaSyAvzTNPrudlKMhuE8d5sbp0IbrItqR2MTE",
+          authDomain: "",
+          databaseURL: "https://messageinthebottle-4d3dc.firebaseio.com"
+      };
+      firebase.initializeApp(config);
+
+      var database = firebase.database();
+      function getpaikat(paikka){
+          $('#calendar').fullCalendar('removeEvents');
+          firebase.database().ref('/dates/'+paikka+'/noutopvmt/').once('value').then(function(snapshot) {
+              var daatta = snapshot.val() ;
+              if(!daatta){
+                  alert('Ei aikoja tälle paikkakunnalle!');
+                  return;
+              }
+              for (var ii=0;ii<Object.keys(daatta).length;ii++){
+                  var datas = daatta[Object.keys(daatta)[ii]];
+                  console.log(datas);
+                  var sdate = moment(datas.startdate, 'DD.MM.YYYY').toDate();
+                  var edate = moment(datas.enddate, 'DD.MM.YYYY').toDate();
+                  var tit = datas.title;
+                  var desc = datas.description;
+                  addEvnt(sdate,edate, [''], tit, desc);
+              }
+          });
+      }
+      //TODO function for saving to /dates/+paikka+/varatutnoudot/
+    </script>
+
+</html>
