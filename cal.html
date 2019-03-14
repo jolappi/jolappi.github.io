@@ -10,7 +10,9 @@
         <!--link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.css'>
-        <style></style>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <style>
+        </style>
     </head>
     <body>
         <center>
@@ -19,20 +21,18 @@
         <div class="row">
             <div class="col-sm-5 col-md-2 col-lg-3"></div>
             <div class="col-sm-2 col-md-8 col-lg-6">
-                 <div class="form-group row" >
-                     <div class="col-md-4">
-                        <select id="paikkakunta" class="form-control" onchange="haepvmt(this.options[this.selectedIndex].value)">
-                            <option selected="selected" disabled="disabled">Valitse nouto paikkakunta</option>
-                            <option value="tampere">Tampere</option>
-                            <option value="pirkkala">Pirkkala</option>
-                            <option value="ylöjärvi">Ylöjärvi</option>
-                            <option value="nokia">Nokia</option>
-                        </select>
-                    </div>
-                    <div class="col-md-8">
-                            <span>Valitse paikkakunta niin vapaat noutoajat tulevat näkyviin</span>
-                    </div>
-                </div>
+                <div class="input-group">
+                <span class="input-group-btn dropdown">
+                    <button type="button" class="btn btn-outline-dark dropdown-toggle custom font-weight-bold" data-toggle="dropdown">Valitse nouto paikkakunta<span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="#" data-value="tampere">Tampere</a></li>
+                        <li><a href="#" data-value="pirkkala">Pirkkala</a></li>
+                        <li><a href="#" data-value="ylöjärvi">Ylöjärvi</a></li>
+                        <li><a href="#" data-value="nokia">Nokia</a></li>
+                    </ul>
+                </span>
+                <label class="control-label col-sm-12 col-md-6 col-lg-6">Valitse paikkakunta niin vapaat noutoajat tulevat näkyviin</label>
+            </div>
             </div>
             <div class="col-sm-5 col-md-2 col-lg-3"></div>
         </div>
@@ -145,6 +145,12 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/lang/fi.js'></script>
     <script id="rendered-js">
+        $(".dropdown-menu li a").click(function(){
+            console.log($(this).data('value'));
+            $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+            $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+            haepvmt($(this).data('value'));
+        });
         var pk = "";
         var bgcolo = '#004895';
         var bgbgcolo = '#CEE2FE';
