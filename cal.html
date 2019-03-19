@@ -12,114 +12,215 @@
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.css'>
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <style>
+        .boxeddiv {
+            border-width:thin;
+            border-style: solid;
+        }
+        .blue-ht {
+            background-color:darkblue;
+        }
+        .wht {
+            color:white;
+        }
+        .divdivider {
+            height: 50px;
+        }
+        .bg-gray {
+            background-color:#f9f9fb;
+        }
+        @media(max-width: 768px) {
+            a.full-width {
+            width: 100%;
+        }
+}
+}
         </style>
     </head>
     <body>
+        <div class="row divdivider"></div>
+        <div class="row">
+            <div class="col-sm-5 col-md-5 col-lg-5"></div>
+            <div class="col-sm-5 col-md-2 col-lg-2 blue-ht">
+                <center>
+                    <br>
+                    <h1 class="wht">Tilaa nouto tästä</h1>
+                    <br>
+                </center>
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5"></div>
+        </div>
+        <div class="row divdivider"></div>
         <center>
-            <h1>Tarkista alueesi noutopäivät</h1>
+            <h1>Kuinka paljon jätettä on</h1>
         </center>
         <div class="row">
+            <div class="col-xs-12 col-md-3 col-lg-3"></div>
+            <div id="pieninouto" class="col-xs-12 col-md-1 col-lg-1  btn-group">
+                <a href="javascript:void(0)" class="boxeddiv full-width" id="pieninoutobtn" onclick="pieninouto()">
+                    <center>
+                    <img class="img-responsive" src="jh1.png" alt="Ei kuvaa"/>
+                    <br>
+                    <span id="pieninoutospan">
+                    <strong><b>69 €</b></strong>
+                    <p>Sis. max kahden esineen noudon<br><br></p>
+                    <label id="valit1"><b>Valitse</b></label>
+                    <span>
+                    </center>
+                </a>
+            </div>
+            <div class="col-xs-12 col-md-1 col-lg-1"></div>
+            <div id="keskikoknouto" class="col-xs-1 col-md-1 col-lg-1 btn-group">
+                <a href="javascript:void(0)" class="boxeddiv full-width" id="keskikoknoutobtn" onclick="keskikoknouto()">
+                    <center>
+                    <img class="img-responsive" src="jh2.png" alt="Ei kuvaa">
+                    <br>
+                    <span id="keskikoknoutospan">
+                    <strong><b>89 €</b></strong>
+                    <p>Sis. 3-4 esineen noudon<br><br></p>
+                    <label id="valit2"><b>Valitse</b></label>
+                    </span>
+                    </center>
+                </a>
+            </div>
+            <div class="col-xs-12 col-md-1 col-lg-1"></div>
+            <div id="isonouto" class="col-sm-12 col-md-1 col-lg-1 btn-group">
+                <a href="javascript:void(0)" class="boxeddiv full-width" id="isonoutobtn" onclick="isonouto()">
+                    <center>
+                    <img class="img-responsive" src="jh3.png" alt="Ei kuvaa">
+                    <br>
+                    <span id="isonoutospan">
+                    <strong><b>44,35 €/h</b></strong>
+                    <p>* jätteenkäsittely maksu jos enemmän tai irtotavaraa</p>
+                    <label id="valit3"><b>Valitse</b></label>
+                    </span>
+                    </center>
+                </a>
+            </div>
+            <div class="col-xs-12 col-md-4 col-lg-4"></div>
+        </div>
+        <div class="row divdivider"></div>
+        <div class="row divdivider bg-gray"></div>
+        <div class="row bg-gray">
             <div class="col-sm-5 col-md-2 col-lg-3"></div>
             <div class="col-sm-2 col-md-8 col-lg-6">
+                <center>
+                    <h1>Tarkista alueesi noutopäivät</h1>
+                </center>
+                <br>
                 <div class="input-group">
                 <span class="input-group-btn dropdown">
                     <button type="button" class="btn btn-outline-dark dropdown-toggle custom font-weight-bold" data-toggle="dropdown">Valitse nouto paikkakunta<span class="caret"></span></button>
                     <ul class="dropdown-menu pull-right">
-                        <li><a href="#" data-value="tampere">Tampere</a></li>
-                        <li><a href="#" data-value="pirkkala">Pirkkala</a></li>
-                        <li><a href="#" data-value="ylöjärvi">Ylöjärvi</a></li>
-                        <li><a href="#" data-value="nokia">Nokia</a></li>
+                        <li><a data-value="tampere">Tampere</a></li>
+                        <li><a data-value="pirkkala">Pirkkala</a></li>
+                        <li><a data-value="ylöjärvi">Ylöjärvi</a></li>
+                        <li><a data-value="nokia">Nokia</a></li>
                     </ul>
                 </span>
                 <label class="control-label col-sm-12 col-md-6 col-lg-6">Valitse paikkakunta niin vapaat noutoajat tulevat näkyviin</label>
+                <div id='calendar'></div>
             </div>
             </div>
             <div class="col-sm-5 col-md-2 col-lg-3"></div>
         </div>
     <!--hr-->
-    <div class="row">
-        <div class="col-sm-5 col-md-2 col-lg-3"></div>
-        <div class="col-sm-2 col-md-8 col-lg-6">
-            <div id='calendar'></div>
-        </div>
-        <div class="col-sm-5 col-md-2 col-lg-3"></div>
-    </div>
     <!--hr-->
-    <div id="varaukset"></div>
-    <!-- Modal -->
+    <div class="row divdivider bg-gray"></div>
+    <!-- Modal ->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Noudon tarkemmat tiedot</h5>
-                </div>
+                </div-->
                 <!-- TODO real submit -->
+                <div class="row bg-gray">
+                <div class="col-sm-5 col-md-2 col-lg-3"></div>
+                <div class="col-sm-2 col-md-8 col-lg-6" >
                 <form id="noutoreq" action="">
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 form-inline">
                                 <label>
-                                    <span class="eqh">PVM:</span>
-                                    <input type="text" id="pvm" style="border: 0px;" disabled="disabled">
+                                    <span class="eqh"><strong>Nouto:</strong>
+                                    <span id="spanni"></span>
+                                    <input class="bg-gray d-none" type="text" id="paikka" style="border: 0px;" disabled="disabled">
+                                    <input class="bg-gray d-none" type="text" id="pvm" style="border: 0px;" disabled="disabled">
+                                    <input class="bg-gray d-none" type="text" id="klo" style="border: 0px;" disabled="disabled">
+                                    </span>
                                 </label>
                             </div>
+                            <div class="col-md-3"></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
                                 <label>
-                                    <span class="eqh">Paikka:</span>
-                                    <input type="text" id="paikka" style="border: 0px;" disabled="disabled">
+                                    <span class="eqh"><strong>Määrä:</strong>
+                                    <input class="bg-gray" type="text" id="maara" style="border: 0px;" disabled="disabled">
+                                    <span id="maara2"></span>
+                                    </span>
                                 </label>
                             </div>
+                            <div class="col-md-3"></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
                                 <label>
-                                    <span class="eqh">NIMI:</span>
-                                    <br>
-                                    <input type="text" id="nimi" placeholder="Nimi">
+                                    <span class="eqh"><strong>Hinta:</strong>
+                                    <input class="bg-gray" type="text" id="hinta" style="border: 0px;" disabled="disabled">
+                                    </span>
                                 </label>
                             </div>
+                            <div class="col-md-3"></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-8">
-                                <label>
-                                    <span class="eqh">EMAIL:</span>
-                                    <br>
-                                    <input type="email" id="email" placeholder="Email">
-                                </label>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <input class="col-md-12" type="text" id="nimi" placeholder="Nimi">
                             </div>
+                            <div class="col-md-3"></div>
                         </div>
+                        <br>
                         <div class="row">
-                            <div class="col-md-8">
-                                <label>
-                                    <span class="eqh">PUHELIN:</span>
-                                    <br>
-                                    <input type="phone" id="puhelin" placeholder="Puhelin">
-                                </label>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <input class="col-md-12" type="address" id="osoite" placeholder="Osoite">
                             </div>
+                            <div class="col-md-3"></div>
                         </div>
+                        <br>
                         <div class="row">
-                            <div class="col-md-8">
-                                <label>
-                                    <span class="eqh">KLO:</span>
-                                    <br>
-                                    <input type="time" id="klo" placeholder="Klo">
-                                </label>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <input class="col-md-12" type="email" id="email" placeholder="Sähköposti">
                             </div>
+                            <div class="col-md-3"></div>
                         </div>
+                        <br>
                         <div class="row">
-                            <div class="col-md-8">
-                                <label>
-                                    <span>OSOITE:</span>
-                                    <br>
-                                    <input type="address" id="osoite" placeholder="Osoite">
-                                </label>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <input class="col-md-12" type="phone" id="puhelin" placeholder="Puhelin">
                             </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <textarea rows="4" class="col-md-12" id="lisatiedot" placeholder="Lisätietoa tai tarkennettavaa"></textarea>
+                            </div>
+                        <div class="col-md-3"></div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hylkää</button>
+                    <!--div class="modal-footer"-->
+                    <div class="row">
+                        <div class="offset-md-2 col-md-8 ">
+                        <!--button type="button" class="btn btn-secondary" data-dismiss="modal">Hylkää</button-->
+                        <center>
                         <button
                             type="button"
                             class="btn btn-primary"
@@ -129,14 +230,20 @@
                             document.getElementById('puhelin').value,
                             document.getElementById('nimi').value,
                             document.getElementById('email').value,
-                            document.getElementById('klo').value
-                        )">Tee nouto pyyntö</button>
+                            document.getElementById('klo').value,
+                            document.getElementById('lisatiedot').value,
+                            document.getElementById('maara').value
+                        )">Tee nouto pyyntö</button></center>
+                        </div>
                     </div>
+                    <div class="row divdivider"></div>
                 </form>
             </div>
+        </div
+            <!--/div>
         </div>
-    </div>
-
+    </div-->
+    <div id="varaukset"></div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
     <!--script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -145,6 +252,44 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/lang/fi.js'></script>
     <script id="rendered-js">
+        function remclasses(){
+            $('#pieninoutobtn').removeClass("blue-ht");
+            $('#pieninoutospan').removeClass("wht");
+            $('#keskikoknoutobtn').removeClass("blue-ht");
+            $('#keskikoknoutospan').removeClass("wht");
+            $('#isonoutobtn').removeClass("blue-ht");
+            $('#isonoutospan').removeClass("wht");
+            $('#valit1').html("<b>Valitse</b>");
+            $('#valit2').html("<b>Valitse</b>");
+            $('#valit3').html("<b>Valitse</b>");
+        }
+        function pieninouto(){
+            remclasses();
+            $('#hinta').val("69€");
+            $('#maara').val('enintään kaksi esinettä');
+            $('#maara2').html('(sis. kuljetuksen, jätteenkäsittelymaksun ja verot)');
+            $('#pieninoutobtn').addClass("blue-ht");
+            $('#pieninoutospan').addClass("wht");
+            $('#valit1').html("<b>Valittu</b>");
+        }
+        function keskikoknouto(){
+            remclasses();
+            $('#hinta').val("89€");
+            $('#maara').val('3-4 esinettä');
+            $('#maara2').html('(sis. kuljetuksen, jätteenkäsittelymaksun ja verot)');
+            $('#keskikoknoutobtn').addClass("blue-ht");
+            $('#keskikoknoutospan').addClass("wht");
+            $('#valit2').html("<b>Valittu</b>");
+        }
+        function isonouto(){
+            remclasses();
+            $('#hinta').val("44,35€/h");
+            $('#maara').val('enemmän kuin 4 esinettä');
+            $('#maara2').html('');
+            $('#isonoutobtn').addClass("blue-ht");
+            $('#isonoutospan').addClass("wht");
+            $('#valit3').html("<b>Valittu</b>");
+        }
         $(".dropdown-menu li a").click(function(){
             console.log($(this).data('value'));
             $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
@@ -190,7 +335,9 @@
                     }
                     $('#pvm').val(evnt.start.format('DD.MM.YYYY'));
                     $('#paikka').val(pk);
-                    $('#myModal').modal('toggle');
+                    //$('#myModal').modal('toggle');
+                    $('#klo').val(evnt.title);
+                    $('#spanni').html($('#pvm').val()+', '+$('#paikka').val()+', '+$('#klo').val());
                 },
                 eventAfterRender: function (event, element, view) {},
                 eventRender: function (eventObj, $el) {
@@ -282,7 +429,15 @@
             }
         });
     }
-    function writenoudot(pvm, osoite, puhelin, nimi, email, klo) {
+    function writenoudot(pvm, osoite, puhelin, nimi, email, klo, lisatiedot,maara) {
+        if (!maara) {
+            alert('määrä puuttuu');
+            return;
+        }
+        if (!pvm) {
+            alert('valitse paikkakunta ja pvm ja aika kalenterista');
+            return;
+        }
         if (!nimi) {
             alert('nimi puuttuu');
             return;
@@ -299,15 +454,17 @@
             alert('puhelin puuttuu');
             return;
         }
-        $('#myModal').modal('toggle');
+        //$('#myModal').modal('toggle');
         var nodotpvm = pvm.replace(/\./g, '');
+        console.log(nimi,osoite,pvm,email,puhelin,klo,lisatiedot);
         firebase.database().ref('/dates/' + pk + '/noudot/' + nodotpvm + osoite + nimi + '/').set({
+            nimi: nimi,
+            osoite: osoite,
             pvm: pvm,
             email: email,
             puhelin: puhelin,
             klo: klo,
-            nimi: nimi,
-            osoite: osoite
+            lisatiedot: lisatiedot
         });
         alert('Nouto pyyntö talletettu');
         getpaikat(pk);
